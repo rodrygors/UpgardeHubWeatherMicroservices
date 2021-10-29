@@ -1,6 +1,7 @@
 package com.botcamp.serverside.controller;
 
 import com.botcamp.serverside.controller.response.WeatherResponse;
+import com.botcamp.serverside.model.Weather;
 import com.botcamp.serverside.service.WeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,8 +15,13 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
+
     @GetMapping("/weather")
-    public WeatherResponse getWeatherByCity(@RequestParam String city){
-            return weatherService.getWeather(city).createWeatherResponse();
+    public Weather getWeatherByCity(@RequestParam String city) {
+        return weatherService.getWeather(city);
     }
+//    @GetMapping("/weather/{city}")
+//    public WeatherResponse getWeatherByCity(@PathVariable(value = "city") String city){
+//            return weatherService.getWeather(city).createWeatherResponse();
+//    }
 }

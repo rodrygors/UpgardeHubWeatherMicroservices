@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Component
 public class WeatherProvider {
     private final RestTemplate restTemplate;
@@ -19,14 +22,17 @@ public class WeatherProvider {
         this.apiKey = apiKey;
     }
 
-    public Weather getWeatherForCity(String city) {
+public Weather getWeatherForCity(String city) {
         String url = apiUrl + "?key=" + apiKey + "&q=" + city + "&aqi=no";
         final ResponseEntity<WeatherResponseApi> response = restTemplate.getForEntity(url, WeatherResponseApi.class);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return Weather
                 .builder()
                 .temperature(response.getBody().getCurrent().getTempC())
-                .dateTime(response.getBody().getCurrent().getLastUpdated())
+                .dateTime(LocalDateTime.parse(response.getBody().getCurrent().getLastUpdated(), formatter))
                 .precipitation(response.getBody().getCurrent().getPrecipMm())
+                .city((city))
                 .build();
     }
 }

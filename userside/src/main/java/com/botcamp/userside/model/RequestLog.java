@@ -23,7 +23,5 @@ public class RequestLog {
     private String userName;
     private LocalTime timeStamp;
     private String requestedCity;
-    private Weather weather;
+    //private Weather weather;
 }
-
-

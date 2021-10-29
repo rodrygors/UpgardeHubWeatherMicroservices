@@ -18,13 +18,15 @@ public class Weather {
     private float temperature;
     private LocalDateTime dateTime;
     private float precipitation;
+    private String city;
 
     @JsonIgnore
     public WeatherResponse createWeatherResponse() {
         return new WeatherResponse(
                 this.temperature,
                 this.dateTime,
-                this.precipitation
+                this.precipitation,
+                this.city
         );
     }
 }

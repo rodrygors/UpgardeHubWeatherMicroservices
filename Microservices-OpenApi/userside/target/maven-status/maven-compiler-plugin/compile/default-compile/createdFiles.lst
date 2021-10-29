@@ -1,6 +1,0 @@
-com\botcamp\userside\model\RequestLog.class
-com\botcamp\userside\controller\RequestLogController.class
-com\botcamp\userside\Service\RequestLogService.class
-com\botcamp\userside\UsersideApplication.class
-com\botcamp\userside\model\RequestLog$RequestLogBuilder.class
-com\botcamp\userside\repository\RequestLogRepository.class

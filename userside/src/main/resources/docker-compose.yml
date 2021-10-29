@@ -24,7 +24,7 @@ services:
   mongo:
     image: mongo
     ports:
-      - "27017:27017"
+      - "27018:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: poison
       MONGO_INITDB_ROOT_PASSWORD: rats
@@ -33,7 +33,7 @@ services:
     ports:
       - "8081:8080"
     environment:
-      SPRING_DATA_MONGODB.UIR: mongodb://poison:rats@mongo:27017/test
+      SPRING_DATA_MONGODB_URI: mongodb://poison:rats@mongo:27017/test
       WEATHER_API_URL: https://api.weatherapi.com/v1/current.json
       WEATHER_API_KEY: e4243250ab474b5b84c115932212710
     depends_on:

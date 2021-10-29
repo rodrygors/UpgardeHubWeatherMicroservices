@@ -13,4 +13,5 @@ public class WeatherResponse {
     private float temp;
     private LocalDateTime dateTime;
     private float precipitation;
+    private String city;
 }
